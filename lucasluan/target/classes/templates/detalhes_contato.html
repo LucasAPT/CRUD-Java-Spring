@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Detalhes do Contato</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="text-center">Detalhes do Contato</h1>
+
+            <!-- Detalhes do contato -->
+            <dl class="row">
+                <dt class="col-sm-3">ID:</dt>
+                <dd class="col-sm-9" th:text="${contato.id}"></dd>
+
+                <dt class="col-sm-3">Nome:</dt>
+                <dd class="col-sm-9" th:text="${contato.nome}"></dd>
+
+                <dt class="col-sm-3">Telefone:</dt>
+                <dd class="col-sm-9" th:text="${contato.telefone}"></dd>
+
+                <dt class="col-sm-3">Email:</dt>
+                <dd class="col-sm-9" th:text="${contato.email}"></dd>
+
+                <dt class="col-sm-3">Adicionais:</dt>
+                <dd class="col-sm-9" th:text="${contato.adicionais}"></dd>
+            </dl>
+
+            <!-- Voltar para a lista de contatos -->
+            <p class="text-center"><a href="/contatos/listarContatos">Voltar para a Lista de Contatos</a></p>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

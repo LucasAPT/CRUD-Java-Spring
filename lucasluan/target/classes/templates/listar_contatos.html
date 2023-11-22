@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Listar Contatos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="text-center">Listar Contatos</h1>
+
+            <!-- Link para inserir novo contato -->
+            <p class="text-center"><a th:href="@{/contatos/novoContato}">Inserir Novo Contato</a></p>
+
+            <!-- Tabela de contatos -->
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>Email</th>
+                    <th>Adicionais</th>
+                    <th>Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="contato : ${contatos}">
+                    <td th:text="${contato.id}"></td>
+                    <td th:text="${contato.nome}"></td>
+                    <td th:text="${contato.telefone}"></td>
+                    <td th:text="${contato.email}"></td>
+                    <td th:text="${contato.adicionais}"></td>
+                    <td>
+                        <a class="btn btn-info" th:href="@{/contatos/detalhesContato/{id}(id=${contato.id})}">Detalhes</a>
+                        <a class="btn btn-warning" th:href="@{/contatos/editarContato/{id}(id=${contato.id})}">Editar</a>
+                        <a class="btn btn-danger" th:href="@{/contatos/excluirContato/{id}(id=${contato.id})}" th:attr="data-nome=${contato.nome}" onclick="return confirmExclusao(this)">Excluir</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    function confirmExclusao(link) {
+        var nomeContato = link ? link.getAttribute("data-nome") : null;
+        return confirm("Tem certeza que deseja excluir o contato '" + (nomeContato != null ? nomeContato : 'Nome Indefinido') + "'?");
+    }
+    /*]]>*/
+</script>
+
+</body>
+</html>

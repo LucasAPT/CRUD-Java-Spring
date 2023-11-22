@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Editar Contato</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="text-center">Editar Contato</h1>
+
+            <!-- Formulário para editar o contato -->
+			<form method="post" th:action="@{'/contatos/atualizarContato/' + ${contato.id}}" th:object="${contato}">
+                <input type="hidden" th:field="*{id}" />
+
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" class="form-control" id="nome" name="nome" th:field="*{nome}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefone">Telefone:</label>
+                    <input type="text" class="form-control" id="telefone" name="telefone" th:field="*{telefone}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email" class="form-control" id="email" name="email" th:field="*{email}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="adicionais">Notas adicionais:</label>
+                    <textarea class="form-control" id="adicionais" name="adicionais" th:field="*{adicionais}"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+            </form>
+
+            <!-- Voltar para a lista de contatos -->
+            <p class="text-center"><a href="/contatos/listarContatos">Voltar para a Lista de Contatos</a></p>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
